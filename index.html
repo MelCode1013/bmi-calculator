@@ -55,12 +55,37 @@
       </label>
     </form>
 
-    Your BMI is...
+    <form class="height-weight-imperial">
+      <label for="height">
+        Height
+        <div class="input-with-ft">
+          <input type="text" name="height-ft" id="height-ft" placeholder="0">
+          <span class="ft-text">ft</span>
+        </div>
+        <div class="input-with-inch">
+          <input type="text" name="height-inch" id="height-inch" placeholder="0">
+          <span class="inch-text">in</span>
+        </div>
 
-    <!-- add score -->
+      </label>
+      <label for="weight">
+        Weight
+        <div class="input-with-lbs">
+          <input type="text" name="weight" id="weight" placeholder="0">
+          <span class="lbs-text">lbs</span>
+        </div>
 
-    Your BMI suggests you're <!-- add classification -->.
-    Your ideal weight is between <!-- add range -->.
+      </label>
+    </form>
+    <section>
+      Your BMI is...
+
+      <!-- add score -->
+      <span class="calc-bmi"></span>
+
+      <p>Your BMI suggests you're <!-- add classification -->.
+        Your ideal weight is between <!-- add range -->.</p>
+    </section>
   </section>
   <section class="bmi-results">
     <h2>What your BMI result means</h2>
