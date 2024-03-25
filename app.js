@@ -1,22 +1,8 @@
 
-
-
-
 /*TO DO: Logic to calculate BMI for imperial
 
 */
 
-
-
-/* document.getElementById('height-cm').addEventListener('input', function (event) {
-    heightInCM = event.target.value;
-    console.log(heightInCM); // Or perform any other action with the value
-});
-
-document.getElementById('weight-kg').addEventListener('input', function (event) {
-    weightinKG = event.target.value;
-    console.log(weightinKG); // Or perform any other action with the value
-}); */
 let heightInCM;
 let weightInKG;
 
@@ -57,5 +43,29 @@ const metricBMIValues = () => {
 //calling the metricBMIValues function so it starts reading values when the page loads
 metricBMIValues()
 
+////////LOGIC for IMPERIAL VALUES BMI ///////////
+let feet;
+let inches;
+let pounds;
 
+const calcBMIImperial = (feet, inches, pounds) => {
+    let heightInches = parseFloat(feet * 12 + inches)
+    const bmi = ((parseFloat(pounds) * 703) / heightInches) / heightInches
+    return bmi
+}
 
+const imperialBMIValues = () => {
+    const elements = document.getElementsByClassName('height-weight-imperial');
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('input', function (event) {
+            let heightInFt = parseFloat(document.getElementById('height-ft').value)
+            let heightInInches = parseFloat(document.getElementById('height-inch').value)
+            let weightInPounds = parseFloat(document.getElementById('weight').value)
+            const bmi = calcBMIImperial(heightInFt, heightInInches, weightInPounds)
+            updateBMIMetric(bmi)
+        })
+    }
+
+}
+
+imperialBMIValues()
