@@ -69,3 +69,40 @@ const imperialBMIValues = () => {
 }
 
 imperialBMIValues()
+
+////LOGIC for radio buttons////
+
+//I need logic so if metric is selected, imperial options are hidden and vice versa
+
+const metricSelection = document.getElementById('hw-metric')
+const imperialSelection = document.getElementById('hw-imperial')
+
+///
+imperialSelection.classList.toggle('hidden')
+
+const radioButtonCheck = () => {
+    const radioButtons = document.getElementsByName('metric-imperial')
+
+    for (let i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+            if (radioButtons[i].id == 'imperial') {
+                metricSelection.classList.toggle('hidden')
+                imperialSelection.classList.remove('hidden')
+            } else if (radioButtons[i].id == 'metric') {
+                imperialSelection.classList.toggle('hidden')
+                metricSelection.classList.remove('hidden')
+            }
+        }
+    }
+}
+
+////Event listener that checks for a "change" in radio button selection
+
+const radioButtons = document.getElementsByName('metric-imperial')
+
+for (let i = 0; i < radioButtons.length; i++) {
+    radioButtons[i].addEventListener('change', radioButtonCheck)
+}
+
+///function call to run the radiobuttoncheck
+radioButtonCheck()
