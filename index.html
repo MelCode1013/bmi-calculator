@@ -25,7 +25,7 @@
       of a healthy weight, it offers a valuable starting point to evaluate
       your overall health and well-being.</p>
   </section>
-  <section>
+  <section id="bmi-form">
     <h2>Enter your details below</h2>
     <form class="radio">
       <label for="metric">
@@ -36,11 +36,11 @@
         <input type="radio" name="metric-imperial" id="imperial" value="imperial">Imperial
       </label>
     </form>
-    <form class="height-weight-metric">
+    <form class="height-weight-metric hidden" id="hw-metric">
       <label for="height-cm">
         Height
         <div class="input-with-cm">
-          <input type="text" name="height-cm" id="height-cm" placeholder="0">
+          <input type="number" name="height-cm" id="height-cm" placeholder="0">
           <span class="cm-text">cm</span>
         </div>
 
@@ -48,14 +48,14 @@
       <label for="weight-kg">
         Weight
         <div class="input-with-kg">
-          <input type="text" name="weight-kg" id="weight-kg" placeholder="0">
+          <input type="number" name="weight-kg" id="weight-kg" placeholder="0">
           <span class="kg-text">kg</span>
         </div>
 
       </label>
     </form>
 
-    <form class="height-weight-imperial">
+    <form class="height-weight-imperial hidden" id="hw-imperial">
       <label for="height">
         Height
         <div class="input-with-ft">
@@ -83,8 +83,8 @@
       <!-- add score -->
       <span class="calc-bmi"></span>
 
-      <p>Your BMI suggests you're <!-- add classification -->.
-        Your ideal weight is between <!-- add range -->.</p>
+      <p>Your BMI suggests you're <span class="classification"></span><!-- add classification -->.</p>
+      <p>Your ideal weight is between <span class="weight-range"></span><!-- add range -->.</p>
     </section>
   </section>
   <section class="bmi-results">
