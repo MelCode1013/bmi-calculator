@@ -1,17 +1,11 @@
-/* TO DO: Logic to calculate BMI for Metric
-
-Metric: divide weight in kg by height in cm squared, and multiply the result by 10,000
 
 
 
 
-TO DO: Logic to calculate BMI for imperial
+/*TO DO: Logic to calculate BMI for imperial
 
 */
-let heightInCM = ''
-let weightinKG = ''
 
-console.log(heightInCM)
 
 
 /* document.getElementById('height-cm').addEventListener('input', function (event) {
@@ -23,22 +17,45 @@ document.getElementById('weight-kg').addEventListener('input', function (event) 
     weightinKG = event.target.value;
     console.log(weightinKG); // Or perform any other action with the value
 }); */
+let heightInCM;
+let weightInKG;
 
-//This function grabs the Metric section for values. It looks for a height and weight input and returns the values as they are added to the console. I'll use these values to do the BMI calculation for Metric
+//This function calculates the BMI for metric values
+const calcBMIMetric = (heightInCM, weightInKG) => {
+    const heightInMeters = parseFloat(heightInCM) / 100
+    console.log(`Height in Meters: ${heightInMeters}`)
+    const bmi = parseFloat(weightInKG) / (heightInMeters * heightInMeters)
+    console.log(`BMI: ${bmi}`)
+    return bmi
+}
 
-const calcBMIMetric = () => {
+//Add in a function that displays BMI to the UI for Metric only
+
+const updateBMIMetric = (bmi) => {
+
+    const displayBMI = document.getElementsByClassName("calc-bmi")[0]
+    console.log(displayBMI)
+    if (!isNaN(bmi)) {
+        displayBMI.textContent = `${bmi.toFixed(2)}`
+    } else
+        displayBMI.textContent = ''
+}
+
+//This function grabs the Metric section for values. It looks for a height and weight input and returns the values as they are added to the console.
+const metricBMIValues = () => {
     const elements = document.getElementsByClassName('height-weight-metric');
     for (let i = 0; i < elements.length; i++) {
         elements[i].addEventListener('input', function (event) {
-            heightinCM = document.getElementById('height-cm').value;
-            weightinKG = document.getElementById('weight-kg').value;
-            console.log(`Height: ${heightinCM}`)
-            console.log(`Weight: ${weightinKG}`)
+            let heightInCM = parseFloat(document.getElementById('height-cm').value)
+            let weightinKG = parseFloat(document.getElementById('weight-kg').value)
+            const bmi = calcBMIMetric(heightInCM, weightinKG)
+            updateBMIMetric(bmi)
         })
     }
 
 }
+//calling the metricBMIValues function so it starts reading values when the page loads
+metricBMIValues()
 
-calcBMIMetric()
 
-//CREATE a function that takes in calcBMIMetric() and uses those values to calculate the BMI. May rename function to bmiMetricValues since no calculation is being done there.
+
