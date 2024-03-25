@@ -6,6 +6,11 @@
 let heightInCM;
 let weightInKG;
 
+//declaring variables for classification and weight range
+
+const classification = document.querySelector('.classification')
+const weightRange = document.querySelector('.weight-range')
+
 //This function calculates the BMI for metric values
 const calcBMIMetric = (heightInCM, weightInKG) => {
     const heightInMeters = parseFloat(heightInCM) / 100
@@ -36,6 +41,9 @@ const metricBMIValues = () => {
             let weightinKG = parseFloat(document.getElementById('weight-kg').value)
             const bmi = calcBMIMetric(heightInCM, weightinKG)
             updateBMIMetric(bmi)
+            if (bmi >= 18.5 && bmi <= 24.9) {
+                classification.textContent = 'at a healthy weight'
+            }
         })
     }
 
